@@ -1,0 +1,32 @@
+body{
+    font-family: Georgia, 'Times New Roman', Times, serif; 
+    padding: 20px;
+    text-align: justify;
+}
+
+a{
+    text-decoration: none; 
+    color: black; 
+    font-size: 125%; 
+    font-weight: bold;
+}
+
+nav a:hover{
+    color: yellow;
+}
+
+header{
+    width: 700px; 
+    margin: auto;
+}
+
+main{
+    width: 700px; 
+    margin: auto
+}
+
+footer{
+    width: 700px; 
+    margin: auto; 
+    text-align: right;
+}
