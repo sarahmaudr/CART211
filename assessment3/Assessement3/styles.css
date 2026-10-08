@@ -134,7 +134,7 @@ footer{
         display: flex;
         justify-content: space-around;
         align-items: center;
-        background: black;
+        background: rgb(110, 109, 109);
         z-index: 1000;
         color: white;
         float: none;
