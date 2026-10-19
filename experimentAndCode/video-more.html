@@ -72,16 +72,75 @@
     <h1>Snowy Video</h1>
     <p>Watch the Video</p>
 
-    /*-----------------------
+    <!-----------------------
     Video Size Control Buttons
-    ------------------------*/
+    -------------------------->
 
     <!--Group the buttons together-->
     <div class="size-controls">
-        
+
+            <!--Tells visitors what the buttons control-->
+        <strong>Video Size:</strong>
+
+            <!--When clicked, calls the JavaScript function and changes the video width to 320px-->
+        <button onclick="changeSize('small')">
+            Small
+        </button>
+
+            <!--When clicked, calls the JavaScript function and changes the video width to 480px-->
+        <button onclick="changeSize('medium')">
+            Medium
+        </button>
+
+            <!--When clicked, calls the JavaScript function and changes the video width to 720px-->
+        <button onclick="changeSize('large')">
+            Large
+        </button>
+
+            <!--When clicked, calls the JavaScript function and changes the video width to available content width-->
+        <button onclick="changeSize('full')">
+            Full Width 
+        </button>
+
     </div>
 
+    <!-------------
+    Video Player
+    -------------->
 
+    <!-- id="myVideo" gives the video a unique name tha J5 can use to find it.
+    class="full" makes the video start at full width.
+    controls displays the built-in play, pause, volume and other controls.-->
+
+    <video id="myVideo" class="full" controls>
+        <source src="video_1.mp4" type="video/mp4">
+        Sorry, your browser cannot play this video
+    </video>
+
+    <!--JavaScript: Change video size-->
+    <script>
+        //This function runs whenever a size button is clicked.
+        // the word 'size' receives the value from the button.
+        // such as 'small', 'medium', 'large', or 'full'.
+
+        function changeSize(size) {
+            // finds the video element using its unique ID.
+            const video = document.getElementById("myVideo");
+            
+        // removes all four possible size classes
+        // this prevents old size settings from remaining active
+            video.classList.remove(
+                "small",
+                "medium",
+                "large",
+                "full"
+            );
+
+            // adds the new size class selected by the visitor.
+            // the CSS then applies the matching width
+            video.classList.add(size);
+        }
+    </script>
 
 </body>
 </html>
