@@ -1,607 +1,1354 @@
-/*GENERAL PAGE STYLES*/
+/* =====================================================
+   1. GENERAL PAGE STYLES (Change to Google Fonts and use Roboto and Inter
+   ===================================================== */
 
 body {
-    font-family: Roboto, sans-serif;
-    /*makes the text very BOLD*/
+    font-family: 'Libre Franklin', sans-serif;
+    /* Use Libre Franklin as the main font.
+       Use a sans-serif font if it is unavailable. */
+
     font-weight: 900;
-    /*Use the default font size as the reference size*/
+    /* Make the text very bold. */
+
     font-size: 1em;
+    /* Use the default font size as the reference size. */
+
     padding: 0;
+    /* Remove the inner spacing around the page. */
+
     margin: 0;
+    /* Remove the browser's default outer page margins. */
 }
+
+
+/* =====================================================
+   2. IMAGE HOVER EFFECTS
+   ===================================================== */
+
+/* Position each figure so text can appear over its image. */
+.pict figure {
+    position: relative;
+    /* Create a positioning reference for child elements. */
+
+    display: inline-block;
+    /* Allow figures to sit alongside one another. */
+
+    cursor: pointer;
+    /* Show a hand cursor when hovering over the figure. */
+}
+
+/* Make images fill the available width. */
+.pict img {
+    width: 100%;
+    /* Use the full width of the image container. */
+
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    /* Animate zoom and transparency changes over 0.3 seconds. */
+}
+
+/* Hide the text until the image is hovered over. */
+.hover-text {
+    display: none;
+    /* Hide the text by default. */
+
+    position: absolute;
+    /* Allow the text to sit on top of the image. */
+
+    bottom: 30px;
+    /* Place the text 30px above the bottom edge. */
+
+    left: 10px;
+    /* Place the text 10px from the left edge. */
+
+    background-color: rgba(0, 0, 0, 0.7);
+    /* Use a black background with 70% opacity. */
+
+    color: white;
+    /* Make the text white. */
+
+    padding: 8px;
+    /* Add space inside the text box. */
+
+    border-radius: 4px;
+    /* Slightly round the box corners. */
+
+    white-space: nowrap;
+    /* Keep the text on one line. */
+}
+
+/* Reveal the text when the figure is hovered over. */
+.pict figure:hover .hover-text {
+    display: block;
+    /* Change the text from hidden to visible. */
+}
+
+/* Enlarge and slightly fade images on hover. */
+.pict figure:hover img {
+    transform: scale(1.05);
+    /* Increase the image size by 5%. */
+
+    opacity: 0.9;
+    /* Make the image slightly transparent. */
+}
+
+/* Apply a blur and zoom effect to images with class "im". */
+.im:hover {
+    filter: blur(2px);
+    /* Add a small blur of 2 pixels. */
+
+    opacity: 0.9;
+    /* Reduce the opacity slightly. */
+
+    transform: scale(1.05);
+    /* Enlarge the image by 5%. */
+
+    transition: all 0.3s ease-in-out;
+    /* Animate property changes over 0.3 seconds.
+       For smooth transitions in both directions, it is
+       usually better to put this in the normal .im rule. */
+}
+
+
+/* =====================================================
+   3. DESKTOP MENU
+   ===================================================== */
 
 .menu1 {
     display: flex;
+    /* Arrange menu items in a row. */
+
     background: white;
+    /* Give the menu a white background. */
+
     justify-content: space-around;
+    /* Distribute space around the menu items. */
+
     align-items: center;
+    /* Vertically center the menu items. */
 }
 
 .menu1 a {
     display: block;
+    /* Make each link a block-level element. */
 }
 
-/*Hide the hamburger menu by default on desktop*/
+/* Hide the hamburger menu by default on desktop. */
 .hamburger-menu {
-    /*the mobile media query will display it*/
     display: none;
-    /*vertically center its content when using flex box*/
+    /* The mobile media query will display it. */
+
     align-items: center;
-    /*horizontally center its contents*/
+    /* Vertically center its contents when using Flexbox. */
+
     justify-content: center;
+    /* Horizontally center its contents. */
 }
 
 .hamburger-menu button {
-    /*removes the default background for the button*/
     background: none;
+    /* Remove the default button background. */
+
     border: none;
+    /* Remove the button border. */
+
     font-size: 2em;
+    /* Make the hamburger icon larger. */
+
     color: gray;
+    /* Set the icon color to gray. */
 }
 
 .hamburger-menu button .fa-bars {
     cursor: pointer;
+    /* Show a hand cursor over the hamburger icon. */
 }
 
+/* Hide the close button by default. */
 .close-menu {
     display: none;
 }
 
-/* MAIN CONTENT AND HEADINGS*/
+
+/* =====================================================
+   4. MAIN CONTENT AND HEADINGS
+   ===================================================== */
 
 #wrapper {
     width: 90%;
+    /* Make the content container 90% of the page width. */
+
     margin: 0 auto;
+    /* Center the container horizontally. */
 }
 
 h1 {
     text-align: left;
-    /*Make the heading 4 times the base font size*/
+    /* Align the main heading to the left. */
+
     font-size: 4em;
-    /*add space below the heading*/
+    /* Make the heading four times the base font size. */
+
     margin-bottom: 1em;
+    /* Add space below the heading. */
 }
 
-h2 {
+header h2 {
     margin-top: 0px;
+    /* Remove space above the heading. */
+
     margin-bottom: 30px;
+    /* Add space below the heading. */
+
     text-align: right;
+    /* Align the heading to the right. */
+
     font-size: 20px;
+    /* Set the font size to 20 pixels. */
+
     color: darkgray;
+    /* Use dark gray text. */
 }
 
 .stories_title {
     text-align: right;
+    /* Align the stories title to the right. */
+
     font-size: 3em;
+    /* Make the title three times the base font size. */
 }
 
 .intro {
     font-size: 2em;
+    /* Make the introduction text larger. */
+
     margin-bottom: 1em;
+    /* Add space below the introduction. */
+
     text-align: justify;
+    /* Align paragraph text along both edges. */
 }
 
-h3 {
+header h3 {
     margin-top: 0px;
+    /* Remove space above the heading. */
+
     margin-bottom: 10px;
+    /* Add space below the heading. */
+
     text-align: left;
+    /* Align the heading to the left. */
+
     font-size: 20px;
+    /* Set the font size to 20 pixels. */
+
     color: darkgray;
+    /* Use dark gray text. */
 }
 
-/*NAVIGATION BAR*/
+
+/* =====================================================
+   5. NAVIGATION BAR
+   ===================================================== */
+
 nav {
     display: grid;
-    /*first column: 60% of the grid width.
-    second column: the remaining available space*/
+    /* Use CSS Grid to organize the navigation. */
+
     grid-template-columns: 60% 1fr;
+    /* First column: 60% of the grid width.
+       Second column: the remaining available space. */
 
     align-items: center;
+    /* Vertically center the contents. */
+
     font-size: 2em;
+    /* Enlarge the navigation text. */
+
     margin-top: 50px;
+    /* Add space above the navigation bar. */
 }
 
 .logo {
     text-align: left;
+    /* Align the logo to the left. */
 }
 
 nav a {
     text-decoration: none;
+    /* Remove the link underline. */
+
     color: black;
+    /* Make links black. */
+
     font-weight: bold;
+    /* Make links bold. */
 }
 
 nav a:hover {
-    color: rgb(140, 177, 210);
+    color: darkgrey;
+    /* Change the link color when hovered over. */
 }
 
-.menu1 {
+.menuI {
     text-align: right;
+    /* Align this menu item to the right. */
 }
 
-.menu1_active {
+.menuI_active {
     text-align: right;
+    /* Align the active menu item to the right. */
+
     color: gray;
+    /* Give the active item a gray color. */
 }
 
-/* SECTION AND ARTICLES*/
+
+/* =====================================================
+   6. SECTIONS AND ARTICLES
+   ===================================================== */
 
 section {
     margin-bottom: 30px;
+    /* Add space below each section. */
+
     text-align: justify;
+    /* Align the text along both edges where possible. */
 }
 
-/* add extra space below the final paragraph*/
+/* Select the last paragraph inside an article. */
 article p:last-child {
     margin-bottom: 80px;
+    /* Add extra space below the final paragraph. */
 }
 
 article h3 {
     margin-bottom: 10px;
+    /* Add space below article headings. */
+
     color: darkgray;
+    /* Make article headings dark gray. */
 }
 
 
-/*FOOTER*/
+/* =====================================================
+   7. FOOTER
+   ===================================================== */
+
 footer {
     margin-top: 20px;
+    /* Add space above the footer. */
+
     min-height: 30px;
-    font-size: 15px;
+    /* Make the footer at least 30px tall. */
+
+    font-size: 10px;
+    /* Use small text for footer information. */
+
     font-weight: lighter;
+    /* Request a lighter font weight. */
+
     text-align: right;
+    /* Align footer content to the right. */
+
     font-style: italic;
+    /* Display footer text in italics. */
 }
 
 footer a {
     text-decoration: none;
+    /* Remove underlines from footer links. */
+
     color: black;
+    /* Make footer links black. */
 }
 
-/*Story Page Layout*/
 
-/*left column of the story page*/
+/* =====================================================
+   8. STORY PAGE LAYOUT
+   ===================================================== */
+
+/* Left column of the story page. */
 .left_stories {
-    /*span 5 columns, from line 1 to 6*/
-    grid-column: 1/6;
+    grid-column: 1 / 6;
+    /* Span five grid columns, from line 1 to line 6. */
+
     margin: 0;
+    /* Remove outer spacing. */
+
     padding: 0;
+    /* Remove inner spacing. */
 }
 
-/*Right column containing the story text*/
+/* Right column containing the story text. */
 .stories {
-    grid-column: 7/13;
+    grid-column: 7 / 13;
+    /* Span columns 7 through 12. */
+
     margin: 0;
+    /* Remove outer spacing. */
+
     padding: 0;
+    /* Remove inner spacing. */
+
     font-size: 1.2em;
+    /* Increase the text size by 20%. */
+
     line-height: 1.5em;
+    /* Add vertical space between lines for readability. */
 }
 
 .stories p {
     margin-top: 0;
+    /* Remove the top margin from story paragraphs. */
 }
 
-/*DESKTOP IMAGE GRID*/
+
+/* =====================================================
+   9. DESKTOP IMAGE GRID
+   ===================================================== */
 
 .pict {
     display: grid;
-    /*create 12 equally sized columns*/
+    /* Turn the container into a CSS Grid layout. */
+
     grid-template-columns: repeat(12, 1fr);
+    /* Create 12 equally sized columns. */
+
     gap: 0;
+    /* Remove spaces between grid items. */
+
     margin: 0;
+    /* Remove outer margins. */
+
     padding: 0;
+    /* Remove inner spacing. */
 }
 
 .im {
-    width:100%;
+    width: 100%;
+    /* Fill the available width of the grid cell. */
+
     height: auto;
-    /*resquest a square image area+*/
-    aspect-ratio: 1/1;
-    /*fill the area without stretching the image - the image may be cropped to fit*/ 
+    /* Allow the image height to adjust automatically. */
+
+    aspect-ratio: 1 / 1;
+    /* Request a square image area. */
+
     object-fit: cover;
+    /* Fill the area without stretching the image.
+       The image may be cropped to fit. */
+
     box-sizing: border-box;
+    /* Include padding and borders in the element dimensions. */
+
     display: block;
+    /* Remove the extra baseline space below inline images. */
 }
 
-/*FIRST AND SECOND ROWS*/
-/* image 1 : upper left position*/
+
+/* =====================================================
+   10. FIRST AND SECOND ROWS
+   ===================================================== */
+
+/* Image 1: upper-left position. */
 .im1 {
-    /*span 3 columns*/
-    grid-column: 1/4;
-    /*span 2 rows*/
-    grid-row: 1/3;
+    grid-column: 1 / 4;
+    /* Span three columns. */
+
+    grid-row: 1 / 3;
+    /* Span two rows. */
 }
 
-/* image 2 : beside image 1*/
+/* Image 2: beside image 1. */
 .im2 {
-    /*span the next 3 columns*/
-    grid-column: 4/7;
-    /*span the same 2 rows*/
-    grid-row: 1/3;
+    grid-column: 4 / 7;
+    /* Span the next three columns. */
+
+    grid-row: 1 / 3;
+    /* Span the same two rows. */
 }
 
-/* image 3 : large rectangle on the right*/
+/* Image 3: large rectangle on the right. */
 .im3 {
-    /*span 6 columns*/
-    grid-column: 7/13;
-    /*span 4 rows*/
-    grid-row: 1/5;
+    grid-column: 7 / 13;
+    /* Span six columns. */
+
+    grid-row: 1 / 5;
+    /* Span four rows. */
 }
 
-/* image 4 : below image 1*/
+/* Image 4: below image 1. */
 .im4 {
-    /*use the same 3 columns as image 1*/
-    grid-column: 1/4;
-    /*span row 3 and 4*/
-    grid-row: 3/5;
+    grid-column: 1 / 4;
+    /* Use the same three columns as image 1. */
+
+    grid-row: 3 / 5;
+    /* Span rows 3 and 4. */
 }
 
-/* image 5 : below image 2*/
+/* Image 5: below image 2. */
 .im5 {
-    /*span the same 3 column as image 2*/
-    grid-column: 4/7;
-    /*span row 3 and 4*/
-    grid-row: 3/5;
+    grid-column: 4 / 7;
+    /* Use the same three columns as image 2. */
+
+    grid-row: 3 / 5;
+    /* Span rows 3 and 4. */
 }
 
-/*THIRD AND FORTH ROWS*/
 
-/* image 6 : Large restangle on the left*/
+/* =====================================================
+   11. THIRD AND FOURTH ROWS
+   ===================================================== */
+
+/* Image 6: large rectangle on the left. */
 .im6 {
-    /*span 6 columns*/
-    grid-column: 1/7;
-    /*span 4 rows*/
-    grid-row: 5/9;
+    grid-column: 1 / 7;
+    /* Span six columns. */
+
+    grid-row: 5 / 9;
+    /* Span four rows. */
 }
 
-/* image 7 : upper image on the right*/
+/* Image 7: upper image on the right. */
 .im7 {
-    /*span 3 columns*/
-    grid-column: 7/10;
-    /*span 2 rows*/
-    grid-row: 5/7;
+    grid-column: 7 / 10;
+    /* Span three columns. */
+
+    grid-row: 5 / 7;
+    /* Span two rows. */
 }
 
-/* image 8 : beside image 7*/
+/* Image 8: beside image 7. */
 .im8 {
-    /*span the last 3 columns*/
-    grid-column: 10/13;
-    /*align with image 7*/
-    grid-row: 5/7;
+    grid-column: 10 / 13;
+    /* Span the last three columns. */
+
+    grid-row: 5 / 7;
+    /* Align with image 7. */
 }
 
-/* image 9 : below image 7*/
+/* Image 9: below image 7. */
 .im9 {
-    /*use same columns as image 7*/
-    grid-column: 7/10;
-    /*span row 7 and 8*/
-    grid-row: 7/9;
+    grid-column: 7 / 10;
+    /* Use the same columns as image 7. */
+
+    grid-row: 7 / 9;
+    /* Span rows 7 and 8. */
 }
 
-/* image 10 : Below image 8*/
+/* Image 10: below image 8. */
 .im10 {
-    /*use same columns as image 8*/
-    grid-column: 10/13;
-    /*span rows 7 and 8*/
-    grid-row: 7/9;
+    grid-column: 10 / 13;
+    /* Use the same columns as image 8. */
+
+    grid-row: 7 / 9;
+    /* Span rows 7 and 8. */
 }
 
-/* FINAL ROW : IMAGES 11 TO 14*/
-/*apply shared position to image 11 and 13*/
+
+/* =====================================================
+   12. FINAL ROW: IMAGES 11 TO 14
+   ===================================================== */
+
+/* Apply shared positioning to images 11 and 13. */
 .im11,
 .im13 {
-    /*initially assigning the first 3 columns*/
-    grid-column: 1/4;
-    /*span the final 2 rows*/
-    grid-row: 9/11;
+    grid-column: 1 / 4;
+    /* Initially assign the first three columns. */
+
+    grid-row: 9 / 11;
+    /* Span the final two rows. */
 }
 
-/*apply shared position to image 12 and 14*/
+/* Apply shared positioning to images 12 and 14. */
 .im12,
 .im14 {
-    /*initially assigning the columns 4 through 6*/
-    grid-column: 4/7;
-    /*span the final 2 rows*/
-    grid-row: 9/11;
+    grid-column: 4 / 7;
+    /* Initially assign columns 4 through 6. */
+
+    grid-row: 9 / 11;
+    /* Span the final two rows. */
 }
 
-/*override the starting position for image 13*/
+/* Override the starting position for image 13. */
 .im13 {
-    /*place image 13 in columns 7 through 9*/
-    grid-column: 7/10;
+    grid-column: 7 / 10;
+    /* Place image 13 in columns 7 through 9. */
 }
 
-/*override the starting position for image 14*/
+/* Override the starting position for image 14. */
 .im14 {
-    /*place image 14 in columns 10 through 12*/
-    grid-column: 10/13;
+    grid-column: 10 / 13;
+    /* Place image 14 in columns 10 through 12. */
 }
 
-/*END OF THE DESKTOP IMAGE GRID*/
-/*SOCIAL MEDIA LINKS*/
+/* End of the desktop image grid. */
 
-.social a {
-    color: gray;
-    font-size: 30px;
-}
 
-.social a:hover {
-    color: lightgray;
-    font-size: 30px;
-}
 
-.social p {
-    margin-top: 10px;
-    margin-bottom: 30px;
-    color: gray;
-    text-align: center;
-    /*use 80% of the inherited font size*/
-    font-size: 0.8em;
-}
-
-/*SOCIAL ICON CONTAINER*/
-
-.social {
+/* =====================================================
+Social media container */
+ 
+.social-icons {
     display: flex;
-    /*stack the children vertically*/
-    flex-direction: column;
-    /*center the children horizontally*/
+    /* Arrange icons in a row. */
+
+    justify-content: center;
+    /* Center the icons horizontally. */
     align-items: center;
-    text-align: center;
-    /*add 20px of vertical padding and no horizontal padding*/
-    padding: 20px 0;
-    color: gray;
+
+    flex-wrap: wrap;
+    /* Allow icons to move onto another line when needed. */
+
+    gap: 10px;
+    /* Add 10px between the icons. */
+
+    width: 100%;
+    /* Fill the available container width. */
 }
 
-.social .fa {
-    font-size: 3em;
-    padding: 8px;
-    color: gray;
-}
-
-/*ICON ROW AND HOVER EFFECT*/
-
-.icons-wrapper {
-    /*arrange icons in a row*/
+/* Common icon styles */
+.social {
+    width: 30px;
+    height: 30px;
     display: flex;
     justify-content: center;
-    /*allows the icon to another line when needed*/
-    flex-wrap: wrap;
-    gap: 10px;
-    width: 100%;
+    align-items: center;
+
+    color: white;
+    font-size: 15px;
+    text-decoration: none;
+
+    border-radius: 50%;
+/* Adds a smooth animation when the icon's transform or shadow changes */
+transition: transform 0.3s ease,
+            box-shadow 0.3s ease;
+
+/* transform: Animates movement, rotation, or scaling over 0.3 seconds */
+/* box-shadow: Smoothly animates changes to the icon's shadow over 0.3 seconds */
+/* ease: Makes the animation start slowly, speed up, and then slow down */
 }
 
-.fa {
-    font-size: 6em;
+/* Individual brand colors */
+.facebook {
+    background: #1877f2;
 }
 
-.fa:hover {
-    color: lightgray;
+.instagram {
+     /* Sets the gradient direction to 45 degrees */
+    background: linear-gradient(
+        45deg,
+/* Sets the gradient direction to 45 degrees */
+        #feda75,    /* Yellow */
+        #fa7e1e,    /* Orange */
+        #d62976,    /* Pink */
+        #962fbf,    /* Purple */
+        #4f5bd5     /* Blue */
+    );
 }
+
+.twitter {
+    background: #000000;
+}
+
+.tiktok {
+    background: #111111;
+}
+
+.youtube {
+    background: #ff0000;
+}
+
+.linkedin {
+    background: #0a66c2;
+}
+
+.github {
+    background: #24292f;
+}
+
+/* Hover effects */
+/* Applies these styles when the user moves the mouse over a social media icon */
+.social:hover {
+    /* Moves the icon upward by 6px and enlarges it by 8% */
+    transform: translateY(-6px) scale(1.08);
+
+    /* Adds a soft shadow beneath the icon to create a floating effect */
+    /* Values: horizontal offset, vertical offset, blur radius, and shadow color */
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.2);
+}
+
+/* Keyboard accessibility */
+/* Applies these styles when the icon is focused using keyboard navigation, such as the Tab key */
+.social:focus-visible {
+    /* Adds a 3px light-blue outline around the icon to indicate keyboard focus */
+    outline: 3px solid #38bdf8;
+
+    /* Adds 5px of space between the outline and the icon */
+    outline-offset: 5px;
+}
+
+
+/* =====================================================
+   16. CREDITS
+   ===================================================== */
 
 .credits {
     margin-top: 10px;
+    /* Add space above the credits. */
+
     font-size: 1em;
+    /* Use the inherited font size. */
+
     width: 100%;
+    /* Allow the credits to fill the available width. */
 }
 
-/*Responsive Design*/
 
-/*Apply these styles when the screen is 1024px wide or less*/
+/* =====================================================
+   17. RESPONSIVE DESIGN
+   ===================================================== */
+
+/* Apply these styles when the screen is 1024px wide or less. */
 @media (max-width: 1024px) {
-    /*Show the Hamburger menu on smaller screens*/
+
+    /* Show the hamburger menu on smaller screens. */
     .hamburger-menu {
         display: flex;
+        /* Display the hamburger container using Flexbox. */
+
         align-items: center;
+        /* Center its contents vertically. */
     }
 
-    /*set mobile menu link colors and decorations*/
+    /* Set mobile menu link colors and decorations. */
     .menu1 a,
     .menu1 a:hover {
         text-decoration: none;
+        /* Remove link underlines. */
+
         color: gray;
+        /* Set links to gray. */
+
         background-color: transparent;
+        /* Keep link backgrounds transparent. */
     }
-    
-    /*Hide menu until it is opened*/
+
+    /* Hide the menu until it is opened. */
     .menu1 {
         display: none;
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: white;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
+        /* The menu stays hidden until another class displays it. */
 
-        /*place the menu above most page content*/
+        position: fixed;
+        /* Fix the menu to the viewport. */
+
+        top: 0;
+        /* Align it with the top edge. */
+
+        left: 0;
+        /* Align it with the left edge. */
+
+        width: 100%;
+        /* Fill the viewport width. */
+
+        height: 100%;
+        /* Fill the available viewport height. */
+
+        background: white;
+        /* Use a white background. */
+
+        flex-direction: column;
+        /* Stack menu links vertically. */
+
+        justify-content: center;
+        /* Center links vertically. */
+
+        align-items: center;
+        /* Center links horizontally. */
+
         z-index: 1000;
+        /* Place the menu above most page content. */
     }
 
-    /*Make each mobile menu link easier to tap*/
+    /* Make each mobile menu link easier to tap. */
     .menu1 a {
         padding: 20px;
+        /* Add space inside each link. */
     }
 
-    /*Display the close menu button*/
+    /* Display the close-menu button. */
     .close-menu {
         display: block;
+        /* Make the button visible. */
+
         position: absolute;
+        /* Allow precise positioning. */
+
         top: 20px;
+        /* Place it 20px from the top. */
+
         right: 20px;
+        /* Place it 20px from the right. */
+
         font-size: 2em;
+        /* Make the icon larger. */
+
         color: gray;
+        /* Set the icon color to gray. */
     }
 
+    /* The original CSS sets the hamburger to block here.
+       This overrides its earlier display:flex declaration. */
     .hamburger-menu {
         display: block;
+        /* Display the hamburger container as a block. */
     }
 
-    /*Apply this class when the mobile menu is opened*/
+    /* Apply this class when the mobile menu is opened. */
     .menu-deployed {
         display: flex;
+        /* Make the expanded menu visible using Flexbox. */
+
         flex-direction: column;
+        /* Stack the links vertically. */
+
         justify-content: center;
+        /* Center the links vertically. */
+
         align-items: center;
+        /* Center the links horizontally. */
+
         width: 100%;
-        /*fill the viewport height*/
+        /* Fill the screen width. */
+
         height: 100vh;
+        /* Fill the viewport height. */
+
         position: fixed;
+        /* Keep the menu in place while scrolling. */
+
         top: 0;
+        /* Start at the top of the screen. */
+
         left: 0;
+        /* Start at the left of the screen. */
+
         background-color: white;
+        /* Give the menu a white background. */
+
         z-index: 1000;
+        /* Place the menu above the other content. */
+
         padding-top: 50px;
+        /* Add extra space at the top. */
     }
 
-    /*Highlight the active menu link*/
-    .menu1 .active {
+    /* Highlight the active menu link. */
+    .menu1 .actif {
         color: black;
+        /* Make the active link black. */
     }
 
-    /*Remove any grid-column placement from the hambutger*/
+    /* Remove any grid-column placement from the hamburger. */
     .hamburger-menu {
-        /*let the browser position it automatically in a grid*/
         grid-column: auto;
+        /* Let the browser position it automatically in a grid. */
     }
 
+    /* Remove borders and give buttons a white background. */
     button {
         border-width: 0px;
+        /* Remove the border. */
+
         background-color: white;
+        /* Set the background to white. */
     }
 
-    /*Redesign the Nav bar for mobile screen*/
+    /* Redesign the navigation bar for mobile screens. */
     nav {
         margin: 0 auto;
+        /* Center the navigation horizontally. */
+
         margin-bottom: 50px;
+        /* Add space below the navigation. */
+
         width: 100%;
+        /* Fill the available width. */
+
         box-sizing: border-box;
+        /* Include padding and borders in the width. */
+
         padding: 10px 20px;
-        line-height: 20px;
+        /* Add vertical and horizontal spacing. */
+
+        line-height: 30px;
+        /* Set the line height to 30px. */
+
         position: relative;
+        /* Establish a positioning reference. */
+
         display: flex;
-        /*separate the nav items horizontally*/
+        /* Replace the desktop grid with Flexbox. */
+
         justify-content: space-between;
+        /* Separate navigation items horizontally. */
+
         align-items: center;
+        /* Vertically center navigation items. */
+
         flex-wrap: wrap;
-        /*adds a black bottom border*/
-        border-bottom: 4px solid black;
-        background: black;
+        /* Allow items to wrap onto another line. */
+
+        border-bottom: 4px solid #000;
+        /* Add a black bottom border. */
+
+        background: #000;
+        /* Make the navigation background black. */
+
         z-index: 1000;
+        /* Keep navigation above most content. */
+
         color: white;
+        /* Make inherited navigation text white. */
     }
 
+    /* Add spacing above the main heading on mobile. */
     h1 {
         margin-top: 50px;
+        /* Add 50px of space above the heading. */
     }
 
+    /* Make mobile navigation links white. */
     nav a {
         color: white;
+        /* Improve contrast against the black background. */
     }
 
-    /*MOBILE CONTENT WRAPPER*/
+
+    /* =================================================
+       18. MOBILE CONTENT WRAPPER
+       ================================================= */
+
     #wrapper {
         margin-top: 500px;
+        /* This value is overridden by margin: 0 auto below. */
+
         position: relative;
+        /* Establish a positioning reference. */
+
         width: 90%;
-        /*Center the wrapper and reset its top-margin to 0*/
+        /* Use 90% of the available width. */
+
         margin: 0 auto;
-        /* to prevent the wrapper from floating to one side*/
+        /* Center the wrapper and reset its top margin to zero. */
+
         float: none;
+        /* Prevent the wrapper from floating to one side. */
     }
 
     footer {
         margin-top: 40px;
+        /* Add space above the footer. */
+
         font-size: 12px;
+        /* Increase footer text to 12px. */
     }
 
-    /*TWO COLUMN MOBILE IMAGE GRID*/
+
+/* =================================================
+   19. TWO-COLUMN MOBILE IMAGE GRID
+   ================================================= */
+
+.pict {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+
+    margin: 0;
+    padding: 0;
+
+    grid-auto-flow: row;
+    align-items: start;
+}
+
+/* Reset desktop positioning and constrain each grid item. 
+The special character ^ is called a caret. In CSS, when used inside an attribute selector, it means "starts with."
+^= — Means the attribute value must start with the specified text.
+
+^ = Beginning (starts with)
+$ = End (ends with)
+* = Anywhere (contains) */
+
+.pict figure,
+.pict [class^="im"] {
+    grid-column: auto !important;
+    grid-row: auto !important;
+
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
+    box-sizing: border-box;
+
+    margin: 0;
+    padding: 0;
+}
+
+/* Make images fit inside their columns. */
+.pict img {
+    display: block;
+
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    box-sizing: border-box;
+}
+
+/* Prevent hover effects from creating horizontal overflow. */
+.pict figure:hover img,
+.pict .im:hover {
+    transform: none;
+}
+
+/* Keep hover text inside the image. */
+.pict .hover-text {
+    max-width: calc(100% - 20px);
+    box-sizing: border-box;
+    white-space: normal;
+}
+
+/* Apply only on smaller screens. */
+@media (max-width: 600px) {
     .pict {
-        display: grid;
         grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 8px;
-        width: 100%;
-        max-width: 100%;
-        box-sizing: border-box;
-
-        margin: 0;
-        padding: 0;
-
-        grid-auto-flow: row;
-        align-items: start;
-    }
-
-    /*Restrain ddesktop positioning and constrain each grid. 
-    The special character ^ is called a caret. In CSS, when used inside 
-    an atribute selector, it means "start with".active^= - means the
-    atribute must start with the specified text*/
-    .pict figure,
-    .pict [class^="im"] {
-        grid-column: auto;
-        grid-row: auto;
-
-        width: 100%;
-        min-width: 0;
-        max-width: 100%;
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-    }
-
-    /*Make images fit inside of their columns*/
-    .pict img {
-        display: block;
-        width: 100%;
-        max-width: 100%;
-        height: auto;
-        aspect-ratio: 1/1;
-        object-fit: cover;
-        box-sizing: border-box;
-    }
-
-    /*Prevent hover effects from creating horizontal overflow*/
-    .pict figure:hover img,
-    .pict .im:hover {
-        transform: none;
-    }
-
-    /*Keep hover text inside the image*/
-    .pict .hover-text {
-        max-width: calc(100% - 20px);
-        box-sizing: border-box;
-        white-space: normal;
-    }
-
-    /*Apply only on smaller screens*/
-    @media (max-width: 600px) {
-        .pict {
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-            gap: 5px;
-        }
-    }
-
-    /*MOBILE STORY LAYOUT*/
-    .left_stories {
-        grid-column: 1/3;
-        margin: 0;
-        padding: 0;
-    }
-
-    .stories {
-        grid-column: 1/3;
-        margin: 0;
-        padding: 0;
-        font-size: 1.2em;
-        line-height: 1.5em;
-    }
-
-    /*MOBILE BOOK GRID*/
-    .books {
-        grid-template-columns: auto auto;
-        gap: 16px;
+        gap: 5px;
     }
 }
 
 
+    /* =================================================
+       20. MOBILE STORY LAYOUT
+       ================================================= */
 
+    .left_stories {
+        grid-column: 1 / 3;
+        /* Span both columns of the mobile grid. */
+
+        margin: 0;
+        /* Remove outer spacing. */
+
+        padding: 0;
+        /* Remove inner spacing. */
+    }
+
+    .stories {
+        grid-column: 1 / 3;
+        /* Make the story text span both columns. */
+
+        margin: 0;
+        /* Remove outer spacing. */
+
+        padding: 0;
+        /* Remove inner spacing. */
+
+        font-size: 1.2em;
+        /* Increase the story text size by 20%. */
+
+        line-height: 1.5em;
+        /* Add comfortable spacing between lines. */
+    }
+
+
+    /* =================================================
+       21. MOBILE BOOK GRID
+       ================================================= */
+
+    .books {
+        grid-template-columns: auto auto;
+        /* Create two columns sized according to their content
+           and the available space. */
+
+        gap: 16px;
+        /* Add 16px of space between the grid items. */
+    }
+
+}
+/* End of the media query.
+   All rules above this closing brace inside the media query
+   apply to screens 1024px wide or narrower. */
+   
+/* =====================================================
+   THEME : HUMANS OF NEW YORK (polaroids sur bleu pâle)
+   ===================================================== */
+
+:root {
+    --sky: #dcebf7;          /* fond bleu pâle */
+    --sky-deep: #bcd7ee;     /* bleu un peu plus soutenu */
+    --navy: #1d3557;         /* texte et éléments sombres */
+    --yellow: #fcfa8f;       /* accent : jaune pâle */
+    --yellow-deep: #f2d94e;  /* jaune plus soutenu pour les traits fins */
+    --card: #fffdf8;         /* blanc cassé des cadres */
+    --muted: #5b6f86;
+}
+
+::selection { background: var(--yellow); color: #060606; }
+
+/* ---------- Base : fond quadrillé, texte léger ---------- */
+body {
+    font-family: 'Inter', 'Roboto', sans-serif;
+    font-weight: 400;
+    color: var(--navy);
+    background-color: var(--sky);
+    background-image: radial-gradient(rgba(29, 53, 87, 0.10) 1px, transparent 1px);
+    background-size: 22px 22px;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* ---------- Titres fins et grands ---------- */
+h1 {
+    font-weight: 300;
+    font-size: clamp(2.6rem, 8vw, 5.5rem);
+    letter-spacing: -0.04em;
+    line-height: 1;
+    margin-bottom: 0.5em;
+}
+h1::after {
+    content: "";
+    display: block;
+    width: 90px;
+    height: 6px;
+    margin-top: 18px;
+    background: var(--yellow-deep);
+    border-radius: 4px;
+}
+
+/* Titre de l'histoire : effet surligneur jaune */
+.stories_title {
+    display: inline-block;
+    text-align: left;
+    font-weight: 500;
+    font-size: clamp(1.5rem, 4vw, 2.2rem);
+    margin: 0 0 40px;
+    padding: 0 6px;
+    background: linear-gradient(transparent 55%, var(--yellow) 55%);
+}
+
+/* ---------- Intro (accueil) ---------- */
+.intro {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    font-size: clamp(1.05rem, 2vw, 1.4rem);
+    line-height: 1.7;
+    max-width: 60ch;
+    text-align: left;
+    color: var(--navy);
+}
+.intro:nth-of-type(2) { color: var(--muted); }
+
+/* ---------- Galerie : cadres Polaroid ---------- */
+.pict figure[class] {
+    position: relative;
+    overflow: visible;
+    background: var(--card);
+    padding: 10px 10px 40px;           /* bande blanche en bas pour la légende */
+    box-shadow: 0 10px 24px rgba(29, 53, 87, 0.18);
+    transition: transform 0.35s ease, rotate 0.35s ease, box-shadow 0.35s ease;
+    animation: rise 0.7s ease backwards;
+}
+
+/* Petites inclinaisons différentes */
+.pict figure:nth-child(3n+1) { rotate: -1.4deg; }
+.pict figure:nth-child(3n+2) { rotate: 1.1deg; }
+.pict figure:nth-child(3n)   { rotate: -0.5deg; }
+
+/* Bout de ruban adhésif jaune */
+.pict figure[class]::before {
+    content: "";
+    position: absolute;
+    top: -11px;
+    left: 50%;
+    width: 70px;
+    height: 22px;
+    transform: translateX(-50%) rotate(-3deg);
+    background: rgba(252, 250, 143, 0.85);
+    box-shadow: 0 1px 3px rgba(29, 53, 87, 0.18);
+    z-index: 2;
+}
+
+/* Au survol : la photo se redresse et se soulève */
+.pict figure[class]:hover {
+    rotate: 0deg;
+    transform: translateY(-8px);
+    box-shadow: 0 20px 36px rgba(29, 53, 87, 0.28);
+    z-index: 5;
+}
+
+/* Le zoom reste à l'intérieur du cadre polaroid */
+.pict a {
+    display: block;
+    overflow: hidden;
+}
+
+/* Page story : pas de zoom (l'image n'est pas dans un lien) */
+.left_stories:hover .im,
+.left_stories .im:hover {
+    transform: none;
+}
+
+
+/* Au survol, la légende devient un surligneur jaune */
+.pict figure:hover .hover-text { background: var(--yellow);
+color: #060606; }
+
+@keyframes rise {
+    from { opacity: 0; transform: translateY(24px); }
+}
+.pict figure:nth-child(2n) { animation-delay: 0.08s; }
+.pict figure:nth-child(3n) { animation-delay: 0.16s; }
+
+/* Espace entre les polaroids (bureau seulement) */
+@media (min-width: 1025px) {
+    .pict { gap: 22px; }
+}
+
+/* ---------- Page story ---------- */
+.pict figure.left_stories {
+    align-self: start;
+    padding-bottom: 50px;
+}
+.left_stories .im {
+    aspect-ratio: auto;                /* garde les proportions 1200x790 */
+}
+.stories {
+    align-self: start;
+    background: var(--card);
+    padding: 34px 38px;
+    border-radius: 6px;
+    border-top: 6px solid var(--yellow-deep);
+    box-shadow: 0 10px 24px rgba(29, 53, 87, 0.12);
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    font-size: 1.1em;
+    line-height: 1.85;
+    text-align: left;
+    color: var(--navy);
+}
+.stories p::first-letter {             /* lettrine : navy sur bloc jaune */
+    float: left;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 4em;
+    line-height: 0.85;
+    padding: 6px 10px;
+    margin: 4px 12px 0 0;
+    background: var(--yellow);
+    color: var(--navy);
+}
+
+.stories p:last-child { margin-bottom: 0; }
+
+@media (max-width: 600px) {
+    .stories { padding: 24px 20px; }
+}
+
+/* ---------- Navigation (bureau) : capsule blanche ---------- */
+@media (min-width: 1025px) {
+    nav {
+        font-size: 1rem;
+        margin-top: 24px;
+        margin-bottom: 48px;
+        padding: 10px 30px;
+        background: var(--card);
+        border-radius: 999px;
+        box-shadow: 0 8px 20px rgba(29, 53, 87, 0.12);
+    }
+    .menu1 { background: transparent; }
+    nav a {
+        font-weight: 500;
+        letter-spacing: 0.12em;
+        color: var(--navy);
+        padding: 8px 18px;
+        border-radius: 999px;
+        transition: background 0.25s ease, color 0.25s ease;
+    }
+    nav a:hover { color: var(--navy); background: var(--sky); }
+}
+
+/* ---------- Navigation (mobile / tablette) ---------- */
+@media (max-width: 1024px) {
+    nav {
+        background: var(--navy);
+        border-bottom: 4px solid var(--yellow);
+    }
+    nav a { font-weight: 500; }
+    .hamburger-menu button { background: transparent; color: #fff; cursor: pointer; }
+    .menu-deployed { background-color: var(--navy); }
+    .menu-deployed a,
+    .menu-deployed a:hover {
+        color: #fff;
+        font-size: 1.8rem;
+        font-weight: 300;
+        letter-spacing: 0.15em;
+    }
+    .menu-deployed a:hover { color: var(--yellow); }
+    .close-menu { background: transparent; color: #fff; cursor: pointer; }
+}
+
+/* ---------- Footer ---------- */
+footer {
+    margin-top: 70px;
+    padding: 30px 0 40px;
+    border-top: 2px dashed var(--navy);
+    text-align: center;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 0.8rem;
+    letter-spacing: 0.05em;
+    color: var(--muted);
+}
+.credits { margin-top: 18px; }
+
+/* ---------- Accessibilité ---------- */
+a:focus-visible, button:focus-visible {
+    outline: 3px solid var(--navy);
+    outline-offset: 4px;
+}
+.menu-deployed a:focus-visible,
+nav button:focus-visible {
+    outline-color: var(--yellow);
+}
+@media (prefers-reduced-motion: reduce) {
+    * { animation: none !important; transition: none !important; }
+}
+
+@media (max-width: 1024px) {
+    .pict { gap: 28px 16px; }                     /* place pour les rubans */
+    .pict figure.left_stories { grid-column: 1 / -1 !important; }
+}
+
+/* Justifié uniquement pour l'intro et la story */
+section {
+    text-align: left;
+}
+.intro,
+.stories p {
+    text-align: justify;
+    hyphens: auto;
+    -webkit-hyphens: auto;
+}
+.social-section {
+    text-align: center;
+}
+
+@media (max-width: 600px) {
+    .intro,
+    .stories p {
+        text-align: left;
+    }
+}
