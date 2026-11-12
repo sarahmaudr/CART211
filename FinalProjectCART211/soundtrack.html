@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="assets/music_sheet.png">
+    <meta name="author" content="Sarah-Maude Roy">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="default.css">
+    <title>Choose Your Soundtrack</title>
+</head>
+<body>
+<div id="wrapper">
+    <main>
+        <h2>Which soundtrack do you prefer?</h2>
+        <div class="rule"></div>
+
+        <div class="choices four">
+
+            <div class="card" data-group="soundtrack" data-value="interstellar" tabindex="0">
+                <img src="assets/Avatar.png" class="im" alt="Avatar poster">
+                <h3>Avatar</h3>
+                <button type="button" class="play-btn">Play</button>
+                <audio src="assets/audio/interstellar.mp3"></audio>
+            </div>
+
+            <div class="card" data-group="soundtrack" data-value="harrypotter" tabindex="0">
+                <img src="assets/HarryPotter.png" class="im" alt="Harry Potter poster">
+                <h3>Harry Potter</h3>
+                <button type="button" class="play-btn">Play</button>
+                <audio src="assets/audio/harrypotter.mp3"></audio>
+            </div>
+
+            <div class="card" data-group="soundtrack" data-value="pirates" tabindex="0">
+                <img src="assets/Pirates.png" class="im" alt="Pirates of the Caribbean poster">
+                <h3>Pirates of the Caribbean</h3>
+                <button type="button" class="play-btn">Play</button>
+                <audio src="assets/audio/pirates.mp3"></audio>
+            </div>
+
+            <div class="card" data-group="soundtrack" data-value="happyfeet" tabindex="0">
+                <img src="assets/HappyFeet.png" class="im" alt="Happy Feet poster">
+                <h3>Happy Feet</h3>
+                <button type="button" class="play-btn">Play</button>
+                <audio src="assets/audio/happyfeet.mp3"></audio>
+            </div>
+
+        </div>
+
+        <div class="button-row">
+            <a href="index.html" class="btn ghost">PREVIOUS</a>
+            <a href="feel.html" class="btn">NEXT</a>
+        </div>
+
+        <div class="progress">2 / 10
+            <div class="dots"><span></span><span class="on"></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+        </div>
+    </main>
+    <footer>© Sarah-Maude Roy, CART 211, Fall 2026, Final Project</footer>
+</div>
+<script src="script.js"></script>
+</body>
+</html>

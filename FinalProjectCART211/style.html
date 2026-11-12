@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="assets/music_sheet.png">
+    <meta name="author" content="Sarah-Maude Roy">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="default.css">
+    <title>Piano or Orchestra?</title>
+</head>
+<body>
+<div id="wrapper">
+    <main>
+        <h2>Piano or orchestra?</h2>
+        <div class="rule"></div>
+        <p class="intro">Two versions of "La Valse d'Amélie" from <em>Amélie</em>. Listen to both, then choose the one you prefer.</p>
+        <div class="choices" style="margin-top: 40px;">
+            <div class="card" data-group="style" data-value="piano" tabindex="0">
+                <img src="assets/AmelieP.png" class="im" alt="Amélie poster">
+                <h3>Piano version</h3>
+                <p>La Valse d'Amélie</p>
+                <audio controls src="assets/audio/valse-amelie-piano.mp3"></audio>
+            </div>
+            <div class="card" data-group="style" data-value="orchestra" tabindex="0">
+                <img src="assets/AmelieO.png" class="im" alt="Amélie poster">
+                <h3>Orchestra version</h3>
+                <p>La Valse d'Amélie</p>
+                <audio controls src="assets/audio/valse-amelie-orchestra.mp3"></audio>
+            </div>
+        </div>
+        <div class="button-row">
+            <a href="feel.html" class="btn ghost">PREVIOUS</a>
+            <a href="#" class="btn">NEXT</a>
+        </div>
+        <div class="progress">4 / 10 <div class="dots"><span></span><span></span><span></span><span class="on"></span><span></span><span></span><span></span><span></span><span></span><span></span></div></div>
+    </main>
+    <footer>© Sarah-Maude Roy, CART 211, Fall 2026, Final Project</footer>
+</div>
+<script src="script.js"></script>
+</body>
+</html>
