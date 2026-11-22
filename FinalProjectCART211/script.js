@@ -48,6 +48,17 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    // Page 5 : clicking a card selects it and logs the choice.
+    document.querySelectorAll('.like').forEach(like => {
+        like.addEventListener('click', () => {
+            const group = like.dataset.group;
+            document.querySelectorAll('.like[data-group="' + group + '"]')
+                .forEach(c => c.classList.remove('selected'));
+            like.classList.add('selected');
+            try { sessionStorage.setItem(group, like.dataset.value); } catch (e) {}
+        });
+    });
+
     // Reset the button when a sample finishes.
     document.querySelectorAll('.card audio').forEach(audio => {
         audio.addEventListener('ended', () => {
