@@ -1,5 +1,5 @@
 /* =====================================================
-   YOUR TASTE, THEIR ALGORITHM — old cinema theme
+    old cinema theme
    ===================================================== */
 
 :root {
@@ -8,6 +8,12 @@
     --black: #1a0f1a;        /* Stage Black */
     --gold: #d4a45a;         /* Spotlight Gold */
     --parchment: #f8f1e5;    /* Parchment Paper */
+
+    /* Poster sizes follow the screen so each page fits without scrolling.
+       Make the numbers bigger or smaller to taste. */
+    --ph:  clamp(110px, min(22vh, 17vw), 240px);   /* poster HEIGHT on page 1 */
+    --pw:  clamp(150px, min(23vh, 30vw), 250px);   /* poster WIDTH in 2-card pages */
+    --pwf: clamp(110px, min(19vh, 15vw), 200px);   /* poster WIDTH in the 4-card page */
 }
 
 * { box-sizing: border-box; }
@@ -22,11 +28,23 @@ body {
 
 ::selection { background: var(--gold); color: var(--black); }
 
+/* The page is a column: content centred in the middle, footer at the bottom */
 #wrapper {
     width: 90%;
     max-width: 1300px;
     margin: 0 auto;
-    padding: 50px 0 20px;
+    padding: 3vh 0 0;
+    min-height: 100vh;
+    min-height: 100dvh;
+    display: flex;
+    flex-direction: column;
+}
+main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 /* ---------- Titles ---------- */
@@ -39,11 +57,11 @@ h1, h2 {
     line-height: 1.05;
     text-shadow: 0 0 24px rgba(212,164,90,0.35);
 }
-h1 { font-size: 4rem; letter-spacing: 0.01em; }
-h2 { font-size: 2.3rem; }
+h1 { font-size: clamp(2rem, 6.5vh, 4rem); letter-spacing: 0.01em; }
+h2 { font-size: clamp(1.5rem, 5vh, 2.3rem); }
 
 .intro {
-    margin: 18px auto 0;
+    margin: 1.2vh auto 0;
     text-align: center;
     font-size: 1rem;
     line-height: 1.5;
@@ -54,7 +72,7 @@ h2 { font-size: 2.3rem; }
 .rule {
     width: 260px;
     height: 1px;
-    margin: 26px auto 34px;
+    margin: 2.5vh auto 3vh;
     background: var(--gold);
     position: relative;
 }
@@ -70,15 +88,15 @@ h2 { font-size: 2.3rem; }
 /* ---------- Page 1 ---------- */
 .pict {
     display: grid;
-    grid-template-columns: repeat(7, 1fr);
-    gap: 22px;
-    margin: 40px 0 0;
+    grid-template-columns: repeat(7, calc(var(--ph) * 2 / 3));
+    justify-content: center;
+    gap: 2vh 1.6vw;
+    margin: 2vh 0 0;
 }
 
 .pict figure {
     position: relative;
     margin: 0;
-    /* red frame + thin gold line, like a lobby display case */
     outline: 1px solid var(--gold);
     outline-offset: 3px;
     background: var(--black);
@@ -93,17 +111,18 @@ h2 { font-size: 2.3rem; }
 .im {
     display: block;
     width: 100%;
-    aspect-ratio: 2 / 3;     
+    aspect-ratio: 2 / 3;
     object-fit: cover;
 }
 
 .hover-text {
     display: none;
     position: absolute;
-    left: 8px; right: 8px; bottom: 10px;
-    padding: 6px 8px;
+    left: 6px; right: 6px; bottom: 8px;
+    padding: 4px 6px;
     text-align: center;
-    font-size: 1rem;
+    font-size: 0.85rem;
+    line-height: 1.15;
     font-weight: 600;
     background: rgba(26,15,26,0.88);
     color: var(--gold);
@@ -115,7 +134,7 @@ h2 { font-size: 2.3rem; }
     display: flex;
     justify-content: center;
     gap: 24px;
-    margin: 50px 0 10px;
+    margin: 3.5vh 0 0;
 }
 
 .btn {
@@ -141,19 +160,24 @@ h2 { font-size: 2.3rem; }
 .btn.ghost { background: transparent; color: var(--gold); }
 .btn.ghost:hover { background: var(--gold); color: var(--black); }
 
-.start-btn { font-size: 1.9rem; padding: 18px 80px; }
-
-/* ---------- Pages 2–4 ---------- */
-.choices {
-    display: flex;
-    justify-content: center;
-    gap: 50px;
-    margin-top: 10px;
+.start-btn {
+    font-size: clamp(1.3rem, 3.4vh, 1.9rem);
+    padding: 1.2vh 70px;
 }
 
-.card {
-    width: 200px;
-    padding: 24px;
+/* ---------- Pages 2-4, 6-7 ---------- */
+.choices {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+    gap: clamp(24px, 4vw, 50px);
+}
+
+.card,
+.cardP {
+    width: calc(var(--pw) + 40px);      /* poster width + padding */
+    padding: 20px;
     text-align: center;
     background: rgba(142,36,41,0.18);
     outline: 1px solid var(--gold);
@@ -161,70 +185,39 @@ h2 { font-size: 2.3rem; }
     cursor: pointer;
     transition: box-shadow 0.3s ease, transform 0.3s ease, background 0.3s ease;
 }
-.card:hover { transform: translateY(-6px); box-shadow: 0 0 26px rgba(212,164,90,0.5); }
+.card:hover,
+.cardP:hover { transform: translateY(-6px); box-shadow: 0 0 26px rgba(212,164,90,0.5); }
 .card.selected { box-shadow: 0 0 34px rgba(212,164,90,0.75); }
-.card h3 {
-    margin: 12px 0 4px;
+
+.card h3,
+.cardP h3 {
+    margin: 1.2vh 0 0.4vh;
     font-family: 'Playfair Display', Georgia, serif;
     font-size: 1rem;
     color: var(--gold);
 }
 .card p { margin: 0; font-size: 1rem; }
-.card .im { aspect-ratio: 2 / 3; border: 1px solid var(--gold); }
-.card audio { width: 100%; margin-top: 16px; }
+.card .im,
+.cardP .im { border: 1px solid var(--gold); }
+.card audio,
+.cardP audio { display: block; width: 100%; height: 36px; margin-top: 1.5vh; }
 
-/* Page 3 */
-.card.tag { width: 200px; padding: 45px 25px; }
-.card.tag h3 { margin: 0 0 8px; font-size: 2rem; }
+/* Page 3 and 6 */
+.card.tag {
+    width: 200px;
+    min-height: 22vh;
+    padding: 2vh 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.card.tag h3 { margin: 0; font-size: clamp(1.3rem, 3.4vh, 1.7rem); }
 
-/* ---------- Progress indicator ---------- */
-.progress {
-    text-align: center;
-    margin-top: 34px;
-    font-size: 1.1rem;
-    letter-spacing: 0.2em;
-    color: var(--gold);
-}
-.progress .dots { display: flex; justify-content: center; gap: 10px; margin-top: 10px; }
-.progress .dots span {
-    width: 12px; height: 12px;
-    border-radius: 50%;
-    border: 1px solid var(--gold);
-}
-.progress .dots span.on { background: var(--gold); box-shadow: 0 0 10px var(--gold); }
-
-/* ---------- Footer ---------- */
-footer {
-    margin-top: 50px;
-    padding: 24px 0 40px;
-    border-top: 2px dashed var(--red);
-    text-align: center;
-    font-size: 1rem;
-    letter-spacing: 0.05em;
-    color: var(--gold);
-}
-
-/* ---------- Accessibility ---------- */
-a:focus-visible, button:focus-visible, .card:focus-visible {
-    outline: 3px solid var(--gold);
-    outline-offset: 5px;
-}
-
-@media (prefers-reduced-motion: reduce) {
-    * { transition: none !important; }
-}
-
-/* ---------- Four-card row (page 2) ---------- */
-.choices.four {
-    gap: 30px;
-}
-.choices.four .card {
-    width: 180px;
-    padding: 18px;
-}
+/* Page 2 */
+.choices.four { gap: clamp(16px, 2.5vw, 30px); }
+.choices.four .card { width: calc(var(--pwf) + 32px); padding: 16px; }
 .choices.four .card h3 {
-    font-size: 1rem;
-    min-height: 2.8em;         
+    min-height: 2.6em;               /* keeps all four cards the same height */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -234,133 +227,88 @@ a:focus-visible, button:focus-visible, .card:focus-visible {
 .choicesP {
     display: flex;
     justify-content: center;
-    gap: 50px;
-    margin-top: 10px;
+    align-items: center;             /* hearts sit level with the middle of the card */
+    gap: clamp(24px, 5vw, 60px);
 }
-
-.like.tag { width: 150px; padding: 45px 25px; }
-.like.tag h3 { margin: 0 0 8px; font-size: 2rem; }
 .like {
-    margin: 150px 0 0;
-    height: 140px;
-    text-align: center;
+    width: 130px;
+    height: 130px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     background: rgba(142,36,41,0.18);
     outline-offset: 3px;
     cursor: pointer;
     transition: box-shadow 0.3s ease, transform 0.3s ease, background 0.3s ease;
 }
-
+.like h3 { margin: 0; font-size: 2.2rem; }
 .like:hover { transform: translateY(-6px); box-shadow: 0 0 26px rgba(212,164,90,0.5); }
 .like.selected { box-shadow: 0 0 34px rgba(212,164,90,0.75); }
 
-.cardP {
-    width: 200px;
-    padding: 24px;
+/* ---------- Progress indicator ---------- */
+.progress {
     text-align: center;
-    font-size: 2rem;
-    background: rgba(142,36,41,0.18);
-    outline: 1px solid var(--gold);
-    outline-offset: 3px;
-    cursor: pointer;
-    transition: box-shadow 0.3s ease, transform 0.3s ease, background 0.3s ease;
-}
-.cardP:hover { transform: translateY(-6px); box-shadow: 0 0 26px rgba(212,164,90,0.5); }
-.cardP .im { aspect-ratio: 2 / 3; border: 1px solid var(--gold); }
-.cardP audio { width: 100%; margin-top: 16px; }
-.cardP h3 {
-    margin: 12px 0 4px;
-    font-family: 'Playfair Display', Georgia, serif;
+    margin-top: 3vh;
     font-size: 1rem;
+    letter-spacing: 0.2em;
     color: var(--gold);
 }
-/* =====================================================
-   RESPONSIVE DESIGN
-   ===================================================== */
+.progress .dots { display: flex; justify-content: center; gap: 10px; margin-top: 1vh; }
+.progress .dots span {
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    border: 1px solid var(--gold);
+}
+.progress .dots span.on { background: var(--gold); box-shadow: 0 0 10px var(--gold); }
 
-/* ---------- 1024px and below ---------- */
-@media (max-width: 1024px) {
-
-    #wrapper { width: 94%; padding-top: 36px; }
-
-    h1 { font-size: 3rem; }
-    h2 { font-size: 2.2rem; }
-    .intro { font-size: 1.3rem; }
-
-    /* Poster wall: 7 columns become 4 */
-    .pict {
-        grid-template-columns: repeat(4, 1fr);
-        gap: 18px;
-    }
-
-    /* Choice cards wrap onto a second row if needed */
-    .choices {
-        flex-wrap: wrap;
-        gap: 30px;
-    }
-    .card { width: 320px; }
-    .card.tag { width: 220px; padding: 40px 16px; }
-
-    /* Four soundtracks: 2 x 2 grid */
-    .choices.four { gap: 24px; }
-    .choices.four .card { width: calc(50% - 12px); max-width: 320px; }
+/* ---------- Footer ---------- */
+footer {
+    margin-top: 2.5vh;
+    padding: 1.6vh 0 2vh;
+    border-top: 2px dashed var(--red);
+    text-align: center;
+    font-size: 0.9rem;
+    letter-spacing: 0.05em;
+    color: var(--gold);
 }
 
-/* ---------- 600px and below ---------- */
-@media (max-width: 600px) {
-
-    body { font-size: 1.1rem; }
-    #wrapper { padding-top: 24px; }
-
-    h1 { font-size: 2.2rem; }
-    h2 { font-size: 1.8rem; }
-    .intro { font-size: 1.15rem; }
-    .rule { width: 160px; margin: 18px auto 24px; }
-
-    /* Poster wall: 2 columns */
-    .pict {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 14px;
-        margin-top: 24px;
-    }
-    .pict figure { border-width: 3px; outline-offset: 2px; }
-
-    /* No hover on a phone, so the title is always visible */
-    .hover-text {
-        display: block;
-        font-size: 0.8rem;
-        padding: 4px 6px;
-        left: 4px; right: 4px; bottom: 6px;
-    }
-
-    /* Buttons */
-    .button-row { flex-wrap: wrap; gap: 16px; margin-top: 36px; }
-    .btn { padding: 12px 30px; font-size: 1.1rem; }
-    .start-btn { padding: 16px 56px; font-size: 1.5rem; }
-
-    /* Cards: one per row on pages with 2 choices */
-    .choices { gap: 22px; }
-    .card { width: 100%; max-width: 340px; padding: 18px; }
-
-    /* Emotion tags and the four soundtracks: 2 per row */
-    .card.tag {
-        width: calc(50% - 11px);
-        padding: 28px 8px;
-    }
-    .card.tag h3 { font-size: 1.5rem; }
-
-    .choices.four { gap: 16px; }
-    .choices.four .card {
-        width: calc(50% - 8px);
-        padding: 10px;
-    }
-    .choices.four .card h3 { font-size: 1.05rem; }
-    .play-btn { padding: 6px 22px; font-size: 1rem; }
-
-    footer { font-size: 0.9rem; }
+/* ---------- Accessibility ---------- */
+a:focus-visible, button:focus-visible, .card:focus-visible, .like:focus-visible {
+    outline: 3px solid var(--gold);
+    outline-offset: 5px;
+}
+@media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; }
 }
 
-/* ---------- no hover lift ---------- */
+/* ---------- Touch screens: no hover lift ---------- */
 @media (hover: none) {
     .pict figure:hover,
-    .card:hover { transform: none; }
+    .card:hover,
+    .cardP:hover,
+    .like:hover { transform: none; }
+}
+
+/* =====================================================
+   600px and below
+   ===================================================== */
+@media (max-width: 600px) {
+    #wrapper { width: 94%; }
+    main { justify-content: flex-start; padding-top: 2vh; }
+
+    .pict {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 14px 12px;
+    }
+    .hover-text { display: block; font-size: 0.65rem; left: 3px; right: 3px; bottom: 4px; padding: 2px 3px; }
+
+    .button-row { flex-wrap: wrap; gap: 20px; }
+    .start-btn { padding: 1.2vh 50px; }
+
+    .card, .cardP { width: min(300px, 80vw); }
+    .choices.four .card { width: calc(50% - 10px); padding: 10px; }
+    .card.tag { width: calc(50% - 12px); min-height: 14vh; }
+
+    .choicesP { gap: 16px; }
+    .like { width: 80px; height: 80px; }
 }

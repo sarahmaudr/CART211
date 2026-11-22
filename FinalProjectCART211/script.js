@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Pages 2-4: clicking a card selects it and logs the choice.
+    // Pages 2-4, 6-7: clicking a card selects it and logs the choice.
     document.querySelectorAll('.card').forEach(card => {
         card.addEventListener('click', () => {
             const group = card.dataset.group;
@@ -18,33 +18,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 .forEach(c => c.classList.remove('selected'));
             card.classList.add('selected');
             try { sessionStorage.setItem(group, card.dataset.value); } catch (e) {}
-        });
-    });
-
-    // Page 2: one Play button per card. Only one sample plays at a time.
-    document.querySelectorAll('.play-btn').forEach(btn => {
-        btn.addEventListener('click', (e) => {
-            e.stopPropagation();   // playing a sample does not select the card
-            const audio = btn.parentElement.querySelector('audio');
-
-            // Stop every other sample first.
-            document.querySelectorAll('.play-btn').forEach(other => {
-                if (other !== btn) {
-                    other.parentElement.querySelector('audio').pause();
-                    other.classList.remove('playing');
-                    other.textContent = 'Play';
-                }
-            });
-
-            if (audio.paused) {
-                audio.play();
-                btn.classList.add('playing');
-                btn.textContent = 'Pause';
-            } else {
-                audio.pause();
-                btn.classList.remove('playing');
-                btn.textContent = 'Play';
-            }
         });
     });
 
@@ -58,13 +31,12 @@ document.addEventListener('DOMContentLoaded', () => {
             try { sessionStorage.setItem(group, like.dataset.value); } catch (e) {}
         });
     });
-
-    // Reset the button when a sample finishes.
-    document.querySelectorAll('.card audio').forEach(audio => {
-        audio.addEventListener('ended', () => {
-            const btn = audio.parentElement.querySelector('.play-btn');
-            btn.classList.remove('playing');
-            btn.textContent = 'Play';
+    // Only one audio plays at a time
+    document.querySelectorAll('audio').forEach(audio => {
+        audio.addEventListener('play', () => {
+            document.querySelectorAll('audio').forEach(other => {
+                if (other !== audio) other.pause();
+            });
         });
     });
 });
